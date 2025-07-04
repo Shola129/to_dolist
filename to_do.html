@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+       <div id="body" style=" margin-left: 20%;;
+             margin-top: 50px;  border-radius: 10px;
+              border-style: solid; width: 300px; 
+              height: 600px;">
+            <h3 style="font-family: sans-serif;
+                margin-left: 10px;">
+                To-Do List</h3>
+            <h4 id="h4" style="font-family:'Segoe UI',
+             Tahoma, Geneva, Verdana, sans-serif;
+             margin-left: 10px;font-size: 18px; margin-top: -10px;">
+                My tasks</h4>   
+                <button onclick="addTack()" id="addTack"
+                 style="background-color: black; 
+                color: white; float: right; margin-top:
+                 -20px; margin-right: 20px; width: 130px;
+                  height: 25px;
+                 border-radius: 5px;">
+                    Add Task
+                </button>
+                <br /><br />
+                <div id="list" style="padding: 20px;">
+               
+                </div> 
+                <span id="saveList" style="padding: 10px;">
+                    
+                </span>
+                           
+       </div>
+       <script>
+                const listArray = [];
+    function addTack(){
+        let all ='';
+       for (let x = 0; x < listArray.length; x++) {
+            all+=`<div id="div" style="margin-left:20px;
+             font-size: 15px;
+             font-family:sans-serif; border-radius:10px; 
+             box-shadow: 0px 0px 15px 0px rgba(113, 113, 113, 0.5);
+              padding: 20px;">
+              <p>Add Task</p>
+            <label>Title *</label><br />
+            <input id="inp1"  style="width: 200px; height: 30px; "
+             type="text" placeholder="Enter task to perform" /><br /><br />
+            <label>Description(Optional)</label><br />
+            <input type="text"  style="width: 200px; height: 30px;"
+             id="inp2" /><br /><br />
+            <label>Deadline *</label><br />
+            <input type="datetime-local" id="inp3"
+             style="width: 200px; height: 30px; "
+              placeholder="24 Sep 2023" /><br /><br />
+            <button style="background-color: black; 
+                color: white;  margin-top:
+                 -20px; width: 200px;
+                  height: 30px;
+                 border-radius: 15px;"
+             onclick="addList(${this.value})">
+              Add Task</button><br /><br />    <span id="error" style=" color:red;"></span>  </div><br /><br /> `;
+            document.getElementById("list").innerHTML=`${all}`;
+            document.getElementById("h4").style.display="none";
+            document.getElementById("addTack").style.display="none";
+            document.getElementById("saveList").style.display="none";
+         }
+          listArray.push(all);
+          const list = document.getElementById("list");
+          const ele = document.createElement("br");
+          list.appendChild(ele);
+}
+    function addList(that){
+          const inp1 = document.getElementById("inp1").value;
+          const inp2 = document.getElementById("inp2").value;
+          const inp3 = document.getElementById("inp3").value;
+          const all= inp1 + inp2 + inp3;
+          console.log(inp1, inp2, inp3);
+          if(inp1==='' || inp1===null || inp1===undefined ||
+          inp3==='' || inp3===null || inp3===undefined){
+          document.getElementById("error").innerHTML="Enter All tack!!!";
+        }
+        else{
+            localStorage.setItem("To-Do:", all);
+           document.getElementById("error").style.display="none"
+              document.getElementById("div").style.display="none";
+                document.getElementById("h4").style.display="block";
+                  document.getElementById("addTack").style.display="block";
+                  document.getElementById("saveList").innerHTML=`<div  id="save"
+                  style="border-radius: 10px; border-style:solid; margin-top: -50px; font-size: 19px; width: 250px; margin-left:10px; padding:5px
+                  ">
+                    <input type="checkbox"  onclick="check()>
+                    <div style="margin-left:20px; margin-top:-20px; text-decoration : line-through"> 
+                       <span id="line">  ${inp1} </span> <br />
+                        ${inp2} <br />
+                        ${inp3} <br />
+                    </div>
+                        <span id="del" onclick="del(${this.value})"
+                         style="float: right;
+                          margin-top: -70px;
+                          margin-right: 20px">
+                          &demptyv;
+                          </span>
+                    </div>`
+                   document.getElementById("saveList").style.display="block";
+        }
+    }
+     
+
+       function del(){
+            document.getElementById("save").style.display="none";
+             document.getElementById("del").style.display="none";
+
+       }
+
+       function check(line){
+       }
+       </script>
+</body>
+</html>
