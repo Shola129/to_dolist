@@ -82,6 +82,30 @@
           inp3==='' || inp3===null || inp3===undefined){
           document.getElementById("error").innerHTML="Enter All tack!!!";
         }
+        else if(!that){
+            localStorage.setItem("To-Do:", all);
+           document.getElementById("error").style.display="none"
+              document.getElementById("div").style.display="none";
+                document.getElementById("h4").style.display="block";
+                  document.getElementById("addTack").style.display="block";
+                  document.getElementById("saveList").innerHTML=`<div  id="save"
+                  style="border-radius: 10px; border-style:solid; margin-top: -50px; font-size: 19px; width: 250px; margin-left:10px; padding:5px
+                  ">
+                    <input type="checkbox"  onclick="check()>
+                    <div style="margin-left:20px; margin-top:-20px; text-decoration : line-through"> 
+                       <span id="line">  ${inp1} </span> <br />
+                        ${inp2} <br />
+                        ${inp3} <br />
+                    </div>
+                        <span id="del" onclick="del(${this.value})"
+                         style="float: right;
+                          margin-top: -70px;
+                          margin-right: 20px">
+                          &demptyv;
+                          </span>
+                    </div>`
+                   document.getElementById("saveList").style.display="block";
+        }
         else{
             localStorage.setItem("To-Do:", all);
            document.getElementById("error").style.display="none"
@@ -109,6 +133,11 @@
     }
      
 
+       function del(){
+            document.getElementById("save").style.display="none";
+             document.getElementById("del").style.display="none";
+              document.getElementById("del").style.display="none";
+       }
        function del(){
             document.getElementById("save").style.display="none";
              document.getElementById("del").style.display="none";
