@@ -1,1 +1,1 @@
-console.log(Number.Min);
+console.log(Number.MAX_VALUE);
