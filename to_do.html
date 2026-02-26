@@ -1,201 +1,252 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To-Do</title>
+    <style>
+        /* minimal reset / typography */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #e6e6e6; /* soft grey outside */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
-<body> 
-       <div id="body" style=" margin-left: 20%;;
-             margin-top: 50px;  border-radius: 10px;
-              border-style: solid; width: 300px; 
-              height: 600px;">
-            <h3 style="font-family: sans-serif;
-                margin-left: 10px;">
-                To-Do List</h3>
-            <h4 id="h4" style="font-family:'Segoe UI',
-             Tahoma, Geneva, Verdana, sans-serif;
-             margin-left: 10px;font-size: 18px; margin-top: -10px;">
-                My tasks</h4>   
-                <button onclick="addTack()" id="addTack"
-                 style="background-color: black; 
-                color: white; float: right; margin-top:
-                 -20px; margin-right: 20px; width: 130px;
-                  height: 25px;
-                 border-radius: 5px;">
-                    Add Task
-                </button>
-                <br /><br />
-                <div id="list" style="padding: 20px;">
-               
-                </div> 
-                <span id="saveList" style="padding: 10px;">
-                    
-                </span>
-                           
-       </div>
-       <script>
-                const listArray = [];
-    function addTack(){
-        let all ='';
-       for (let x = 0; x < listArray.length; x++) {
-            all+=`<div id="div" style="margin-left:20px;
-             font-size: 15px;
-             font-family:sans-serif; border-radius:10px; 
-             box-shadow: 0px 0px 15px 0px rgba(113, 113, 113, 0.5);
-              padding: 20px;">
-              <p>Add Task</p>
-            <label>Title *</label><br />
-            <input id="inp1"  style="width: 200px; height: 30px; "
-             type="text" placeholder="Enter task to perform" /><br /><br />
-            <label>Description(Optional)</label><br />
-            <input type="text"  style="width: 200px; height: 30px;"
-             id="inp2" /><br /><br />
-            <label>Deadline *</label><br />
-            <input type="datetime-local" id="inp3"
-             style="width: 200px; height: 30px; "
-              placeholder="24 Sep 2023" /><br /><br />
-            <button style="background-color: black; 
-                color: white;  margin-top:
-                 -20px; width: 200px;
-                  height: 30px;
-                 border-radius: 15px;"
-             onclick="addList(${this.value})">
-              Add Task</button><br /><br />    <span id="error" style=" color:red;"></span>  </div><br /><br /> `;
-            document.getElementById("list").innerHTML=`${all}`;
-            document.getElementById("h4").style.display="none";
-            document.getElementById("addTack").style.display="none";
-            document.getElementById("saveList").style.display="none";
-         }
-          listArray.push(all);
-          const list = document.getElementById("list");
-          const ele = document.createElement("br");
-          list.appendChild(ele);
-}
-    function addList(that){
-          const inp1 = document.getElementById("inp1").value;
-          const inp2 = document.getElementById("inp2").value;
-          const inp3 = document.getElementById("inp3").value;
-          const all= inp1 + inp2 + inp3;
-          console.log(inp1, inp2, inp3);
-          if(inp1==='' || inp1===null || inp1===undefined ||
-          inp3==='' || inp3===null || inp3===undefined){
-          document.getElementById("error").innerHTML="Enter All tack!!!";
-        }
-        else if(!that){
-            localStorage.setItem("To-Do:", all);
-           document.getElementById("error").style.display="none"
-              document.getElementById("div").style.display="none";
-                document.getElementById("h4").style.display="block";
-                  document.getElementById("addTack").style.display="block";
-                  document.getElementById("saveList").innerHTML=`<div  id="save"
-                  style="border-radius: 10px; border-style:solid; margin-top: -50px; font-size: 19px; width: 250px; margin-left:10px; padding:5px
-                  ">
-                    <input type="checkbox"  onclick="check()>
-                    <div style="margin-left:20px; margin-top:-20px; text-decoration : line-through"> 
-                       <span id="line">  ${inp1} </span> <br />
-                        ${inp2} <br />
-                        ${inp3} <br />
-                    </div>
-                        <span id="del" onclick="del(${this.value})"
-                         style="float: right;
-                          margin-top: -70px;
-                          margin-right: 20px">
-                          &demptyv;
-                          </span>
-                    </div>`
-                   document.getElementById("saveList").style.display="block";
-        }
-      }
-         function addList(that){
-          const inp1 = document.getElementById("inp1").value;
-          const inp2 = document.getElementById("inp2").value;
-          const inp3 = document.getElementById("inp3").value;
-          const all= inp1 + inp2 + inp3;
-          console.log(inp1, inp2, inp3);
-          console.log(inp1+ "input1", + 'input' + inp2, inp3);
-          if(inp1==='' || inp1===null || inp1===undefined ||
-          inp3==='' || inp3===null || inp3===undefined){
-          document.getElementById("error").innerHTML="Enter All tack!!!";
-        }
-        else if(come){
-            // localStorage.setItem("To-Do:", all);
-          //  document.getElementById("error").style.display="none"
-              document.getElementById("div").style.display="none";
-                document.getElementById("h4").style.display="block";
-                  document.getElementById("addTack").style.display="block";
-                  document.getElementById("saveList").innerHTML=`<div  id="save"
-                  style="border-radius: 10px; border-style:solid; margin-top: -50px; font-size: 19px; width: 250px; margin-left:10px; padding:5px
-                  ">
-                    <input type="checkbox"  onclick="check()>
-                    <div style="margin-left:20px; margin-top:-20px; text-decoration : line-through"> 
-                       <span id="line">  ${inp1} </span> <br />
-                        ${inp2} <br />
-                        ${inp3} <br />
-                    </div>
-                        <span id="del" onclick="del(${this.value})"
-                         style="float: right;
-                          margin-top: -70px;
-                          margin-right: 20px">
-                          &demptyv;
-                          </span>
-                    </div>`
-                   document.getElementById("saveList").style.display="block";
-        }
-        
-        else{
-            localStorage.setItem("To-Do:", all);
-           document.getElementById("error").style.display="none"
-              document.getElementById("div").style.display="none";
-                // document.getElementById("h4").style.display="block";
-                //   document.getElementById("addTack").style.display="block";
-        //           document.getElementById("saveList").innerHTML=`<div  id="save"
-        //           style="border-radius: 10px; border-style:solid; margin-top: -50px; font-size: 19px; width: 250px; margin-left:10px; padding:5px
-        //           ">
-        //             <input type="checkbox"  onclick="check()>
-        //             <div style="margin-left:20px; margin-top:-20px; text-decoration : line-through"> 
-        //                <span id="line">  ${inp1} </span> <br />
-        //                 ${inp2} <br />
-        //                 ${inp3} <br />
-        //             </div>
-        //                 <span id="del" onclick="del(${this.value})"
-        //                  style="float: right;
-        //                   margin-top: -70px;
-        //                   margin-right: 20px">
-        //                   &demptyv;
-        //                   </span>
-        //             </div>`
-        //            document.getElementById("saveList").style.display="block";
-        }
-    }
-     
+<body>
+    <!-- main card: white, grey border, black text -->
+    <div id="body" style="background: #ffffff; width: 340px; 
+            border-radius: 20px; border: 1px solid #cccccc; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05); padding: 20px 15px;">
 
-//        function del(){
-//             document.getElementById("save").style.display="none";
-//              document.getElementById("del").style.display="none";
-//               document.getElementById("del").style.display="none";
-//        }
-//        function del(){
-//             document.getElementById("save").style.display="none";
-//              document.getElementById("del").style.display="none";
-//               document.getElementById("del").style.display="none";
-//        }
-//        function del(){
-//             document.getElementById("save").style.display="none";
-//              document.getElementById("del").style.display="none";
-//               document.getElementById("del").style.display="none";
-//        }
-//        function del(){
-//             document.getElementById("save").style.display="none";
-//              document.getElementById("del").style.display="none";
-//               document.getElementById("del").style.display="none";
-//        }
-// async function hello(hi) {
-  
-// }      
+        <!-- header area -->
+        <h3 style="margin: 0 0 5px 0; font-weight: 500; color: #000000;">To-Do List</h3>
+        <h4 id="h4" style="margin: 0 0 15px 0; font-weight: 400; color: #4a4a4a; font-size: 16px; display: block;">
+            ⚬ my tasks
+        </h4>
 
-//        function check(line){
-//        }
-       </script>
+        <!-- add button (black / white) -->
+        <button onclick="showAddForm()" id="addTack" 
+                style="background: #1e1e1e; color: white; border: none; 
+                width: 100%; padding: 12px 0; border-radius: 30px; 
+                font-size: 15px; font-weight: 500; letter-spacing: 0.3px; cursor: pointer;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: 0.15s;"
+                onmouseover="this.style.background='#333333'" 
+                onmouseout="this.style.background='#1e1e1e'">
+            + Add new task
+        </button>
+
+        <!-- area where the ADD FORM appears (hidden by default) -->
+        <div id="list" style="display: none; margin-top: 20px;"></div>
+
+        <!-- task list container (grey‑white cards) -->
+        <div id="saveList" style="margin-top: 20px; display: block;"></div>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- data ---------- 
+            let tasks = [];   // each task: { title, desc, deadline, completed }
+
+            // load from localStorage
+            function loadTasks() {
+                try {
+                    const stored = localStorage.getItem('todo_tasks');
+                    if (stored) {
+                        tasks = JSON.parse(stored);
+                    } else {
+                        // no stored data → empty array
+                        tasks = [];
+                    }
+                } catch (e) {
+                    tasks = [];
+                }
+                // ensure each task has proper fields (desc optional)
+                tasks = tasks.map(t => ({
+                    title: t.title || '',
+                    desc: t.desc || '',
+                    deadline: t.deadline || '',
+                    completed: t.completed || false
+                }));
+            }
+            loadTasks();
+
+            // save to localStorage
+            function saveTasks() {
+                localStorage.setItem('todo_tasks', JSON.stringify(tasks));
+            }
+
+            // ---------- render the task list (inside saveList) ----------
+            function renderTaskList() {
+                const container = document.getElementById('saveList');
+                if (!container) return;
+
+                if (tasks.length === 0) {
+                    container.innerHTML = `<div style="background: #f5f5f5; color: #777; text-align: center; padding: 20px; border-radius: 18px; font-size: 14px; border: 1px dashed #ccc;">No tasks yet<br><span style="font-size:13px;">click “+ Add new task”</span></div>`;
+                    return;
+                }
+
+                let html = '';
+                for (let i = 0; i < tasks.length; i++) {
+                    const t = tasks[i];
+                    const deadlineStr = t.deadline ? t.deadline.replace('T', ' · ') : 'no deadline';
+                    // inline style for each card (white / grey / black)
+                    html += `
+                        <div class="task-item" data-index="${i}" style="background: #fafafa; border: 1px solid #e0e0e0; border-radius: 20px; padding: 14px 16px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); transition: 0.1s;">
+                            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                <!-- checkbox (black/grey) -->
+                                <input type="checkbox" ${t.completed ? 'checked' : ''} onclick="toggleComplete(${i})" style="width: 18px; height: 18px; accent-color: #2e2e2e; margin-top: 2px; cursor: pointer;">
+
+                                <!-- task main content -->
+                                <div style="flex: 1; word-break: break-word;">
+                                    <div style="font-weight: 600; font-size: 16px; color: #000000; ${t.completed ? 'text-decoration: line-through; color: #7a7a7a;' : ''}">${escapeHtml(t.title)}</div>
+                                    ${t.desc ? `<div style="font-size: 13px; color: #444; margin: 3px 0 5px 0; ${t.completed ? 'text-decoration: line-through; color:#999;' : ''}">${escapeHtml(t.desc)}</div>` : ''}
+                                    <div style="font-size: 12px; color: #666; background: #eaeaea; display: inline-block; padding: 4px 12px; border-radius: 30px; margin-top: 5px;">
+                                        ⏰ ${escapeHtml(deadlineStr)}
+                                    </div>
+                                </div>
+
+                                <!-- delete X (black / grey) -->
+                                <span onclick="deleteTask(${i})" style="color: #888; font-size: 22px; font-weight: 300; cursor: pointer; line-height: 1; margin-left: 5px; transition: 0.1s;" 
+                                      onmouseover="this.style.color='#000'" onmouseout="this.style.color='#888'">✕</span>
+                            </div>
+                        </div>
+                    `;
+                }
+                container.innerHTML = html;
+            }
+
+            // helper to escape HTML (avoid injection)
+            function escapeHtml(text) {
+                if (!text) return '';
+                return String(text).replace(/[&<>"]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    if (m === '"') return '&quot;';
+                    return m;
+                });
+            }
+
+            // ---------- complete toggle ----------
+            window.toggleComplete = function(index) {
+                if (tasks[index]) {
+                    tasks[index].completed = !tasks[index].completed;
+                    saveTasks();
+                    renderTaskList();
+                }
+            };
+
+            // ---------- delete task ----------
+            window.deleteTask = function(index) {
+                if (tasks[index]) {
+                    tasks.splice(index, 1);
+                    saveTasks();
+                    renderTaskList();
+                }
+            };
+
+            // ---------- show form (hide main button & h4, show form) ----------
+            window.showAddForm = function() {
+                // hide main button and "my tasks"
+                document.getElementById('addTack').style.display = 'none';
+                document.getElementById('h4').style.display = 'none';
+
+                // build fresh form inside #list
+                const formContainer = document.getElementById('list');
+                formContainer.style.display = 'block';
+                formContainer.innerHTML = `
+                    <div style="background: #f0f0f0; border-radius: 24px; padding: 20px; border: 1px solid #bebebe;">
+                        <p style="margin: 0 0 15px 0; font-weight: 500; color: #1e1e1e;">➕ add new task</p>
+
+                        <label style="font-size: 13px; font-weight: 500; color: #2e2e2e;">Title *</label>
+                        <input id="inp1" type="text" placeholder="e.g., buy groceries" 
+                            style="width: 100%; padding: 12px; margin: 5px 0 15px 0; border: 1px solid #bbbbbb; border-radius: 40px; background: white; font-size: 14px;">
+
+                        <label style="font-size: 13px; font-weight: 500; color: #2e2e2e;">Description (optional)</label>
+                        <input id="inp2" type="text" placeholder="details..." 
+                            style="width: 100%; padding: 12px; margin: 5px 0 15px 0; border: 1px solid #bbbbbb; border-radius: 40px; background: white; font-size: 14px;">
+
+                        <label style="font-size: 13px; font-weight: 500; color: #2e2e2e;">Deadline *</label>
+                        <input id="inp3" type="datetime-local" 
+                            style="width: 100%; padding: 12px; margin: 5px 0 20px 0; border: 1px solid #bbbbbb; border-radius: 40px; background: white; font-size: 14px; color: #222;">
+
+                        <button onclick="addTaskFromForm()" 
+                            style="background: #1e1e1e; color: white; border: none; width: 100%; padding: 12px; border-radius: 40px; font-weight: 500; font-size: 15px; cursor: pointer;"
+                            onmouseover="this.style.background='#333'" onmouseout="this.style.background='#1e1e1e'">
+                            ✔ save task
+                        </button>
+
+                        <div id="error" style="color: #c00; font-size: 13px; margin-top: 12px; text-align: center;"></div>
+                    </div>
+                `;
+            };
+
+           
+            window.addTaskFromForm = function() {
+                const inp1 = document.getElementById('inp1');
+                const inp2 = document.getElementById('inp2');
+                const inp3 = document.getElementById('inp3');
+                const errorSpan = document.getElementById('error');
+
+                const title = inp1 ? inp1.value.trim() : '';
+                const desc = inp2 ? inp2.value.trim() : '';
+                const deadline = inp3 ? inp3.value : '';
+
+                // validation: title and deadline required
+                if (!title) {
+                    errorSpan.innerText = '❌ title is required';
+                    return;
+                }
+                if (!deadline) {
+                    errorSpan.innerText = '❌ deadline must be set';
+                    return;
+                }
+
+                // create new task
+                tasks.push({
+                    title: title,
+                    desc: desc,
+                    deadline: deadline,
+                    completed: false
+                });
+
+                // save & update list
+                saveTasks();
+                renderTaskList();
+
+                // hide form, bring back header & add button
+                document.getElementById('list').style.display = 'none';
+                document.getElementById('addTack').style.display = 'block';
+                document.getElementById('h4').style.display = 'block';
+
+                // clear error (just in case)
+                if (errorSpan) errorSpan.innerText = '';
+            };
+
+            // ---------- cancel / collapse if click outside? not needed, but add a simple fallback: 
+            // we don't have cancel, but user can click add task again. fine.
+
+            // initial render
+            renderTaskList();
+
+            // if tasks exist, ensure header & button visible (they are visible by default)
+            // if user adds task, we already handle. 
+            // edge: after deletion or toggle, list re-renders fine.
+
+            // (optional) global function to manually hide form if needed, but not required
+
+        })();
+    </script>
+
+    <!-- ensure that any stray inline click definitions are safe 
+         (the whole script is wrapped in IIFE, but functions are attached to window) -->
 </body>
-</html> -->
+</html>
